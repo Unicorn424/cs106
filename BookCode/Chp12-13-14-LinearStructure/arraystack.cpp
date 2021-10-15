@@ -20,7 +20,8 @@ PROVIDED_TEST("Test for deep copy:") {
     stack1.push(2);
     stack1.push(3);
     ArrayStack<int> stack2(stack1);
-    ArrayStack<int> stack3 = stack1;
+    ArrayStack<int> stack3;
+    stack3 = stack1;
     ArrayStack<int> stack4;
 
     EXPECT(stack1 == stack2);

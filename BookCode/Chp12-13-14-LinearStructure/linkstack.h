@@ -14,20 +14,20 @@ public:
 
     int size() const;
     bool isEmpty() const;
+    T peek() const;
+    std::string toString() const;
 
     void clear();
     void push(const T& val);
     T pop();
-    T peek() const;
-    std::string toString() const;
 
     // using deep copy
     LinkStack(const LinkStack<T>& src);
     LinkStack<T>& operator =(const LinkStack<T>& src);
 
-    template<class M>
+    template <class M>
     friend bool operator ==(const LinkStack<M>& lhs, const LinkStack<M>& rhs);
-    template<class M>
+    template <class M>
     friend std::ostream& operator <<(std::ostream& os, const LinkStack<M>& src);
 
 private:
@@ -38,40 +38,40 @@ private:
     void deepCopy(const LinkStack<T>& src);
 };
 
-template<class M>
+template <class M>
 bool operator ==(const LinkStack<M>& lhs, const LinkStack<M>& rhs);
 
-template<class M>
+template <class M>
 bool operator !=(const LinkStack<M>& lhs, const LinkStack<M>& rhs);
 
-template<class M>
+template <class M>
 std::ostream& operator <<(std::ostream& os, const LinkStack<M>& src);
 
 /* ****************************** *
  *        Implementation
  * ****************************** */
-template<class T>
+template <class T>
 LinkStack<T>::LinkStack() {
     count = 0;
     top = nullptr;
 }
 
-template<class T>
+template <class T>
 LinkStack<T>::~LinkStack() {
     clear();
 }
 
-template<class T>
+template <class T>
 int LinkStack<T>::size() const {
     return count;
 }
 
-template<class T>
+template <class T>
 bool LinkStack<T>::isEmpty() const {
     return (count == 0);
 }
 
-template<class T>
+template <class T>
 void LinkStack<T>::clear() {
     if (!isEmpty()) {
         // TODO: pop until stack is empty
@@ -79,7 +79,7 @@ void LinkStack<T>::clear() {
     }
 }
 
-template<class T>
+template <class T>
 void LinkStack<T>::push(const T& val) {
     Node<T>* newNode = new Node<T>(val);
     newNode->next = top;
@@ -89,7 +89,7 @@ void LinkStack<T>::push(const T& val) {
 }
 
 // Note: always checking if the next is nullptr.
-template<class T>
+template <class T>
 T LinkStack<T>::pop() {
     // check check check!!!
     if (isEmpty()) {
@@ -112,7 +112,7 @@ T LinkStack<T>::pop() {
     return record;
 }
 
-template<class T>
+template <class T>
 T LinkStack<T>::peek() const{
     // check check check!!!
     if (isEmpty()) {
@@ -122,13 +122,13 @@ T LinkStack<T>::peek() const{
 }
 
 // deep copy
-template<class T>
+template <class T>
 LinkStack<T>::LinkStack(const LinkStack<T>& src) {
     // copy from scratch
     deepCopy(src);
 }
 
-template<class T>
+template <class T>
 LinkStack<T>& LinkStack<T>::operator =(const LinkStack<T>& src) {
     // copy from scratch or by overwriting
     if (this != src) {
@@ -139,7 +139,7 @@ LinkStack<T>& LinkStack<T>::operator =(const LinkStack<T>& src) {
     return *this;
 }
 
-template<class T>
+template <class T>
 void LinkStack<T>::deepCopy(const LinkStack<T>& src) {
     count = src.count;
 
@@ -162,7 +162,7 @@ void LinkStack<T>::deepCopy(const LinkStack<T>& src) {
     tail = nullptr;
 }
 
-template<class M>
+template <class M>
 bool operator ==(const LinkStack<M>& lhs, const LinkStack<M>& rhs) {
     if (lhs.count != rhs.count) {
         return false;
@@ -181,12 +181,12 @@ bool operator ==(const LinkStack<M>& lhs, const LinkStack<M>& rhs) {
     return true;
 }
 
-template<class M>
+template <class M>
 bool operator !=(const LinkStack<M>& lhs, const LinkStack<M>& rhs) {
     return !(lhs == rhs);
 }
 
-template<class T>
+template <class T>
 std::string LinkStack<T>::toString() const {
     std::string output;
     std::ostringstream os;
@@ -212,7 +212,7 @@ std::string LinkStack<T>::toString() const {
     return output;
 }
 
-template<class M>
+template <class M>
 std::ostream& operator <<(std::ostream& os, const LinkStack<M>& src) {
     os << src.toString();
     return os;

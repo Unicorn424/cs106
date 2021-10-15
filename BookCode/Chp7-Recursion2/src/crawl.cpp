@@ -37,7 +37,7 @@ void crawl(const string& filename) {
     crawlHelper(filename, "");
 }
 
-int main() {
+int main_crawl() {
     string filename = "/Users/minzhiqu/Desktop/Study/MIT/cs106/BookCode/Chp7-Recursion2";
     crawl(filename);
 

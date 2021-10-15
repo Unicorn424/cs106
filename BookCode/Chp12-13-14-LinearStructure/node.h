@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <iostream>
 
-template<class T>
+template <class T>
 class Node {
 public:
     Node();
@@ -15,7 +15,7 @@ public:
     // output
     std::string toString() const;
 
-    template<class M>
+    template <class M>
     friend std::ostream& operator<<(std::ostream& os, const Node<M>& node);
 
     // member variables
@@ -23,26 +23,26 @@ public:
     Node<T>* next;
 };
 
-template<class T>
+template <class T>
 std::ostream& operator<<(std::ostream& os, const Node<T>& node);
 
 /* ****************************** *
  *         Implementation
  * ****************************** */
 
-template<class T>
+template <class T>
 Node<T>::Node() {
     next = nullptr;
 }
 
-template<class T>
+template <class T>
 Node<T>::Node(const T& val) {
     data = val;
     next = nullptr;
 }
 
 // data has to support "<<"
-template<class T>
+template <class T>
 std::string Node<T>::toString() const {
     std::string output;
     std::ostringstream os;
@@ -52,7 +52,7 @@ std::string Node<T>::toString() const {
     return output;
 }
 
-template<class M>
+template <class M>
 std::ostream& operator<<(std::ostream& os, const Node<M>& node) {
     os << node.toString();
 
