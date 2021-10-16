@@ -41,3 +41,20 @@ PROVIDED_TEST("Test for output:") {
 
     EXPECT_EQUAL(output, "capacity: 10, size: 3  {1, 2, 3}");
 }
+
+PROVIDED_TEST("Test for expandCapacity():") {
+    ArrayStack<int> stack;
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    EXPECT_EQUAL(stack.size(), 12);
+}

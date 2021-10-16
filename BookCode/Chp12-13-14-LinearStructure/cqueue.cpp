@@ -27,3 +27,20 @@ PROVIDED_TEST("Test for operator overriding:") {
     EXPECT(q1 == q3);
     EXPECT(q1 != q4);
 }
+
+PROVIDED_TEST("Test for expandCapacity():") {
+    CQueue<int> que;
+    que.enqueue(1);
+    que.enqueue(2);
+    que.enqueue(3);
+    que.enqueue(1);
+    que.enqueue(2);
+    que.enqueue(3);
+    que.enqueue(1);
+    que.enqueue(2);
+    que.enqueue(3);
+    que.enqueue(1);
+    que.enqueue(2);
+    que.enqueue(3);
+    EXPECT_EQUAL(que.size(), 12);
+}

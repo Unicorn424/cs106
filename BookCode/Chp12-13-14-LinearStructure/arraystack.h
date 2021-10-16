@@ -88,10 +88,8 @@ template <class T>
 void ArrayStack<T>::push(T value) {
     if (top >= capacity) {
         expandCapacity();
-    }
-    else {
-        array[top++] = value;
-    }
+    }   
+    array[top++] = value;
 }
 
 template <class T>
