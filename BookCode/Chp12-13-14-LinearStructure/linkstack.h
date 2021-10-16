@@ -131,7 +131,7 @@ LinkStack<T>::LinkStack(const LinkStack<T>& src) {
 template <class T>
 LinkStack<T>& LinkStack<T>::operator =(const LinkStack<T>& src) {
     // copy from scratch or by overwriting
-    if (this != src) {
+    if (this != &src) {
         clear(); // free old memory
         deepCopy(src);
     }
@@ -143,7 +143,8 @@ template <class T>
 void LinkStack<T>::deepCopy(const LinkStack<T>& src) {
     count = src.count;
 
-    // copy all nodes (node chain) from src, noting order of node matters
+    // copy all nodes (node chain) from src, noting the order of node matters
+    // which means we cannot copy from src to this directly.
     Node<T>* front = nullptr;
     Node<T>* tail = nullptr; // track the last node copied
     for (Node<T>* p = src.top; p != nullptr; p = p->next) {
@@ -152,9 +153,9 @@ void LinkStack<T>::deepCopy(const LinkStack<T>& src) {
             front = newNode;
         }
         else {
-            tail->next = newNode;
+            tail->next = newNode; // point to new end node
         }
-        tail = newNode;
+        tail = newNode; // move the tail to the end node
     }
 
     top = front;

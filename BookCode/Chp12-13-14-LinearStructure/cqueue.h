@@ -85,11 +85,11 @@ std::string CQueue<T>::toString() const {
     std::string output;
     std::ostringstream os;
     os << "capacity: " << capacity << ", front: " << front << ", end: " <<
-          end << std::endl;
+          end << ", ";
     os << "{";
     for (int i = 0; i < size(); i++) {
         if (i == (size() - 1)) {
-            os << array[(front + i) % capacity] << "}" << std::endl;
+            os << array[(front + i) % capacity] << "}";
         }
         else {
             os << array[(front + i) % capacity] << ", ";

@@ -39,5 +39,6 @@ PROVIDED_TEST("Test for output:") {
     os << stack;
     std::string output = os.str();
 
-    EXPECT_EQUAL(output, "output = count: 3, top: 0x7fd406ce3140; {data: 3, next: 0x7fd406cf39b0, data: 2, next: 0x7fd406cdc6a0, data: 1, next: 0x0}");
+    // Always fail since allocated memory will change.
+//    EXPECT_EQUAL(output, "output = count: 3, top: 0x7fd406ce3140; {data: 3, next: 0x7fd406cf39b0, data: 2, next: 0x7fd406cdc6a0, data: 1, next: 0x0}");
 }
